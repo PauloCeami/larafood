@@ -304,41 +304,43 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'pesquisar',
         ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-//        [
-//            'text'        => 'pages',
-//            'url'         => 'admin/pages',
-//            'icon'        => 'far fa-fw fa-file',
-//            'label'       => 4,
-//            'label_color' => 'success',
-//        ],
-        ['header' => 'account_settings'],
+        ['header' => 'SISTEMAS E GESTÃO'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'link',
+            'url'  => '#',
+            'icon' => 'fa fa-list',
+            
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'link',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Basic_Cadastros',
+            'icon' => 'fa fa-list',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Planos',
+                    'url'  => 'admin/planos',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text' => 'Planos 1',
+                    'url'  => 'admin/planos',
+                ],
+                [
+                    'text' => 'Planos 2',
+                    'url'  => 'admin/planos',
+                ],
+                [
+                    'text'    => 'Planos',
                     'url'     => '#',
                     'submenu' => [
                         [
