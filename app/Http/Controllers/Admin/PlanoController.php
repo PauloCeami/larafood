@@ -20,12 +20,6 @@ class PlanoController extends Controller {
         return view('admin.pages.planos.create');
     }
 
-    /**
-     * Store a new Plano.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request) {
 
         // validations
@@ -38,5 +32,41 @@ class PlanoController extends Controller {
         $plano->save();
 
         return redirect()->route('planos.index');
+    }
+
+    public function show($id) {
+
+        $plano = Planos::where('plan_id', $id)->first();
+        if (!$plano)
+            return redirect()->back();
+
+        return view('admin.pages.planos.show', [
+            'plano' => $plano
+        ]);
+    }
+
+    public function edit($id) {
+        
+    }
+
+    public function update($id) {
+        
+    }
+
+    public function destroy($id) {
+
+        $deleted = Planos::where('plan_id', $id)->delete();
+        if ($deleted == 0)
+            return redirect()->back();
+
+        return redirect()->route('planos.index');
+    }
+
+    public function search(Request $request) {
+
+        return view('admin.pages.planos.index', [
+            'data' => Planos::search($request->filter),
+            'filter' => $request->except('_token')
+        ]);
     }
 }
