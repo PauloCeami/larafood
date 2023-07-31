@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Planos extends Model {
 
     use HasFactory;
-
+    protected $primaryKey = 'plan_id';
     protected $fillable = ['plan_nome', 'plan_url', 'plan_preco', 'plan_descricao'];
 
     public static function search($filter) {

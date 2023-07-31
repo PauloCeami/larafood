@@ -12,7 +12,7 @@ Route::get('admin/plano/{id}/edit', [PlanoController::class, 'edit'])->name('pla
 Route::put('admin/plano/{id}', [PlanoController::class, 'update'])->name('plano.update');
 Route::delete('admin/plano/{id}', [PlanoController::class, 'destroy'])->name('plano.destroy');
 
-
+Route::get('admin', [PlanoController::class, 'index'])->name('admin.index');
 
 Route::get('/', function () {
     return view('welcome');

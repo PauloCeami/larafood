@@ -15,7 +15,7 @@
         <ul>
             <li><strong>Id: </strong>{{ $plano->plan_id}} </li>
             <li><strong>Nome: </strong>{{ $plano->plan_nome}} </li>
-            <li><strong>Preço: </strong>{{ number_format($plano->plan_preco,2,',','.') }} </li>
+            <li><strong>Preço: </strong> R$ {{ number_format($plano->plan_preco,2,'.',',') }} </li>
             <li><strong>Url: </strong>{{ $plano->plan_url}} </li>
             <li><strong>Descrição: </strong>{{ $plano->plan_descricao}} </li>
         </ul>
