@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use \App\Models\Planos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use \App\Http\Requests\StoreUpdatePlanoRequest;
 
 class PlanoController extends Controller {
 
@@ -20,7 +21,7 @@ class PlanoController extends Controller {
         return view('admin.pages.planos.create');
     }
 
-    public function store(Request $request) {
+    public function store(StoreUpdatePlanoRequest $request) {
 
         // validations
 
@@ -55,7 +56,7 @@ class PlanoController extends Controller {
         ]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(StoreUpdatePlanoRequest $request, $id) {
 
         $plano = Planos::where('plan_id', $id)->first();
         if (!$plano)
