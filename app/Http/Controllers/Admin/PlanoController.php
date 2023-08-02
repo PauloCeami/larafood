@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use \App\Models\Planos;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use \App\Http\Requests\StoreUpdatePlanoRequest;
 
 class PlanoController extends Controller {
 
+    protected $plans;
+
+    public function __construct(Planos $planos) {
+        $this->plans = $planos;
+    }
+
     public function index() {
-        $data = Planos::paginate(5);
+        $data = $this->plans::paginate(5);
         return view('admin.pages.planos.index', [
             'data' => $data
         ]);
@@ -23,15 +28,15 @@ class PlanoController extends Controller {
 
     public function store(StoreUpdatePlanoRequest $request) {
 
-        // validations
+//        $plano->plan_nome = $request->input('plan_nome');
+//        $plano->plan_preco = $request->input('plan_preco');
+//        $plano->plan_descricao = $request->input('plan_descricao');
+//        $plano->plan_url = Str::kebab($plano->plan_nome);
+//        $plano->save();
 
-        $plano = new Planos();
-        $plano->plan_nome = $request->input('plan_nome');
-        $plano->plan_preco = $request->input('plan_preco');
-        $plano->plan_descricao = $request->input('plan_descricao');
-        $plano->plan_url = Str::kebab($request->input('plan_nome'));
-        $plano->save();
 
+        $data = $request->all();
+        $this->plans->create($data);
         return redirect()->route('planos.index');
     }
 
@@ -62,12 +67,13 @@ class PlanoController extends Controller {
         if (!$plano)
             return redirect()->back();
 
-        $plano->plan_nome = $request->input('plan_nome');
-        $plano->plan_preco = $request->input('plan_preco');
-        $plano->plan_descricao = $request->input('plan_descricao');
-        $plano->plan_url = Str::kebab($request->input('plan_nome'));
-        $plano->save();
+//        $plano->plan_nome = $request->input('plan_nome');
+//        $plano->plan_preco = $request->input('plan_preco');
+//        $plano->plan_descricao = $request->input('plan_descricao');
+//        $plano->plan_url = Str::kebab($plano->plan_nome);
+//        $plano->save();
 
+        $plano->update($request->all());
         return redirect()->route('planos.index');
     }
 

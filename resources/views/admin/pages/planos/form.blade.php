@@ -17,12 +17,24 @@
     <input type="text" value="{{  $plano->plan_descricao ?? old('plan_descricao')  }}" name="plan_descricao" class="form-control" placeholder="Descrição:" >
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark" > 
-        @if(isset($plano) && empty($plano))
-        salvar
+    
+    <button type="submit"  
+            
+            class=' 
+            @if(isset($plano) && !empty($plano))
+            btn btn-warning
+            @else
+            btn btn-dark
+            @endif'
+            
+            > 
+        
+        @if(isset($plano) && !empty($plano))
+        Alterar
         @else
-        alterar
+        Salvar
         @endif
+        
     </button>
 </div>
 

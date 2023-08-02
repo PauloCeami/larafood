@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use \App\Models\Planos;
+use Illuminate\Validation\Rule;
 
 class StoreUpdatePlanoRequest extends FormRequest {
 
@@ -21,12 +23,12 @@ class StoreUpdatePlanoRequest extends FormRequest {
      * @return array
      */
     public function rules() {
-
-        $plan_id = $this->segment(3);
+     
+        $plan = Planos::find($this->segment(3));
 
         return [
-            'plan_nome' => 'required|min:3|max:255|unique:planos,plan_id,{$plan_id},plan_id',
-            'plan_descricao' => 'nullable|min:3|max:255|unique',
+            'plan_nome' => ['required', 'max:255', Rule::unique('planos')->ignore($plan)],
+            'plan_descricao' => 'nullable|min:3|max:255',
             'plan_preco' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ];
     }
